@@ -21,6 +21,16 @@ public class RupeeManager : MonoBehaviour
     private void Spawn(){
         Rupee rupee = Instantiate(rupeePrefab, spawner.position, Quaternion.identity, container);
         _rupees.Add(rupee);
+
+        //listen to the event OnCollected from the rupee object
+        rupee.OnCollected += RupeeCollectedHandler;
+    }
+
+    private void RupeeCollectedHandler(Rupee rupee){
+        //remove the event listener and remove the rupee
+        rupee.OnCollected -= RupeeCollectedHandler;
+        _rupees.Remove(rupee);
+        Destroy(rupee.gameObject);
     }
 
     private void StartSpawning(){
@@ -45,4 +55,5 @@ public class RupeeManager : MonoBehaviour
     {
         
     }
+
 }
