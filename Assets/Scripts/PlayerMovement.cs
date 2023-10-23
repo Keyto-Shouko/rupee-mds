@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("Horizontal", horizontal);
         _animator.SetFloat("Vertical", vertical);
         _animator.SetFloat("Speed", _movement.sqrMagnitude);
-        Debug.Log(_movement);
+        //Debug.Log(_movement);
     }
 
     private void FixedUpdate()
